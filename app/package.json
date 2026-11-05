@@ -9,9 +9,10 @@
     "test": "node --test"
   },
   "engines": {
-    "node": ">=22"
+    "node": ">=24"
   },
   "dependencies": {
-    "express": "5.2.1"
+    "express": "5.2.1",
+    "luxon": "^3.6.1"
   }
 }
