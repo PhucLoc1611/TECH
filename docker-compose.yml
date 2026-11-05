@@ -10,3 +10,6 @@ services:
       HELPDESK_URL: ${HELPDESK_URL}
       HELPDESK_TOKEN: ${HELPDESK_TOKEN}
       PORT: "8080"
+      DATABASE_PATH: "/data/sla-report.db"
+    volumes:
+      - ./data:/data

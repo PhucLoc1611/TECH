@@ -1,6 +1,6 @@
-# Node.js + Express starter
+# Node.js + Express app
 
-Node 22, Express 5, tests with the built-in `node --test` runner.
+Node 24, Express 5, SQLite through the built-in `node:sqlite` module, and tests with the built-in `node --test` runner.
 
 ## Use it
 
