@@ -1,4 +1,12 @@
-// Minimal helpdesk API client. Extend as needed.
+export class HelpdeskError extends Error {
+  constructor(message, { status, retryAfterSeconds = null } = {}) {
+    super(message);
+    this.name = "HelpdeskError";
+    this.status = status;
+    this.retryAfterSeconds = retryAfterSeconds;
+  }
+}
+
 export class HelpdeskClient {
   constructor({
     baseUrl = process.env.HELPDESK_URL || "http://localhost:4010",
@@ -22,7 +30,10 @@ export class HelpdeskClient {
     });
     if (!res.ok) {
       const body = await res.text();
-      throw new Error(`Helpdesk API GET ${url} failed: ${res.status} ${body}`);
+      throw new HelpdeskError(`Helpdesk API GET ${url.pathname} failed: ${res.status} ${body}`, {
+        status: res.status,
+        retryAfterSeconds: Number(res.headers.get("Retry-After")) || null,
+      });
     }
     return res.json();
   }
