@@ -2,6 +2,12 @@
 
 Write in English. Short bullet points are fine. Reviewers read this file alongside your code.
 
+## Planning approach
+
+- I read `docs/rules.md`, `docs/contract.md`, and `docs/api.md` before implementation, then split the work into independent increments: application scaffold, SQLite projection, SLA calculation, live synchronization, report/browse/CSV APIs, UI, and deployment documentation.
+- Each increment has focused automated tests. This kept the business-time rules separate from API paging/filtering and from the browser presentation.
+- I prioritized the levels in the order requested: correct report rows first, local indexed reads for performance, change-feed polling for freshness, then browse and CSV export.
+
 ## What I assumed
 
 - The report returns rows in stable ID order where the contract leaves order unspecified.
